@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: auth/v1/auth.proto
 
-package v1
+package authv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -287,7 +287,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\vAuthService\x126\n" +
 	"\x05Login\x12\x15.auth.v1.LoginRequest\x1a\x16.auth.v1.LoginResponse\x12N\n" +
 	"\rValidateToken\x12\x1d.auth.v1.ValidateTokenRequest\x1a\x1e.auth.v1.ValidateTokenResponse\x128\n" +
-	"\x06Revoke\x12\x16.auth.v1.RevokeRequest\x1a\x16.google.protobuf.EmptyBGZEgithub.com/Ostap00034/course-work-backend-auth-service/api/auth/v1;v1b\x06proto3"
+	"\x06Revoke\x12\x16.auth.v1.RevokeRequest\x1a\x16.google.protobuf.EmptyBKZIgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/auth/v1;authv1b\x06proto3"
 
 var (
 	file_auth_v1_auth_proto_rawDescOnce sync.Once

@@ -1,24 +1,32 @@
-# Makefile for api-specs: generate Go code from all .proto files
+# Makefile — генерация Go-стабов из всех .proto под proto/ в gen/go/
 
-PROTOC     := protoc
-PROTO_DIR  := .
-PROTO_FILES := $(shell find $(PROTO_DIR) -type f -name '*.proto')
+# Путь к protoc
+PROTOC    := protoc
 
-.PHONY: all clean
+# Директории исходников и вывода
+PROTO_SRC := proto
+PROTO_DST := gen/go
 
+.PHONY: all generate clean
+
+# По умолчанию — генерировать
 all: generate
 
+# Генерация Go-кода
 generate:
 	@echo "➡ Generating Go code from Protobuf definitions..."
-	@for proto in $(PROTO_FILES); do \
-		echo "  • $$proto"; \
-		$(PROTOC) -I $(PROTO_DIR) $$proto \
-			--go_out $(PROTO_DIR) --go_opt paths=source_relative \
-			--go-grpc_out $(PROTO_DIR) --go-grpc_opt paths=source_relative; \
+	@mkdir -p $(PROTO_DST)
+	@find $(PROTO_SRC) -name '*.proto' | while read -r file; do \
+		echo "  • $$file"; \
+		$(PROTOC) -I $(PROTO_SRC) \
+			--go_out=$(PROTO_DST) --go_opt paths=source_relative \
+			--go-grpc_out=$(PROTO_DST) --go-grpc_opt paths=source_relative \
+			"$$file"; \
 	done
 	@echo "✅ Generation complete."
 
+# Удаление всех сгенерированных файлов
 clean:
-	@echo "🗑 Removing generated files..."
-	@find $(PROTO_DIR) -type f \( -name '*.pb.go' -o -name '*_grpc.pb.go' \) -delete
+	@echo "🗑 Removing generated Go files..."
+	@rm -rf $(PROTO_DST)
 	@echo "✅ Clean complete."

@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: user/v1/user.proto
 
-package v1
+package userv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -351,7 +351,7 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"CreateUser\x12\x1a.user.v1.CreateUserRequest\x1a\x1b.user.v1.CreateUserResponse\x12`\n" +
 	"\x13ValidateCredentials\x12#.user.v1.ValidateCredentialsRequest\x1a$.user.v1.ValidateCredentialsResponse\x12H\n" +
-	"\vGetUserById\x12\x1b.user.v1.GetUserByIdRequest\x1a\x1c.user.v1.GetUserByIdResponseBGZEgithub.com/Ostap00034/course-work-backend-user-service/api/user/v1;v1b\x06proto3"
+	"\vGetUserById\x12\x1b.user.v1.GetUserByIdRequest\x1a\x1c.user.v1.GetUserByIdResponseBKZIgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/user/v1;userv1b\x06proto3"
 
 var (
 	file_user_v1_user_proto_rawDescOnce sync.Once

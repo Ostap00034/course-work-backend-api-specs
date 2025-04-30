@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user.v1;
 
-option go_package = "github.com/Ostap00034/course-work-backend-user-service/api/user/v1;v1";
+option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/user/v1;userv1";
 
 service UserService {
   // Регистрируем нового пользователя
