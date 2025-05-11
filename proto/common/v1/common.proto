@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package common.v1;
+
+// Путь к Go-пакету сгенерированных файлов:
+option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1;commonv1";
+
+// Общая модель пользователя
+message UserData {
+  string id    = 1;
+  string email = 2;
+  string role  = 3;
+}

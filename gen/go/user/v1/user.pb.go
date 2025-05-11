@@ -7,6 +7,7 @@
 package userv1
 
 import (
+	v1 "github.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -259,10 +260,7 @@ func (x *GetUserByIdRequest) GetUserId() string {
 
 type GetUserByIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	CreatedAt     int64                  `protobuf:"varint,3,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     int64                  `protobuf:"varint,4,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	User          *v1.UserData           `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -297,39 +295,18 @@ func (*GetUserByIdResponse) Descriptor() ([]byte, []int) {
 	return file_user_v1_user_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetUserByIdResponse) GetUserId() string {
+func (x *GetUserByIdResponse) GetUser() *v1.UserData {
 	if x != nil {
-		return x.UserId
+		return x.User
 	}
-	return ""
-}
-
-func (x *GetUserByIdResponse) GetEmail() string {
-	if x != nil {
-		return x.Email
-	}
-	return ""
-}
-
-func (x *GetUserByIdResponse) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *GetUserByIdResponse) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
+	return nil
 }
 
 var File_user_v1_user_proto protoreflect.FileDescriptor
 
 const file_user_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12user/v1/user.proto\x12\auser.v1\"E\n" +
+	"\x12user/v1/user.proto\x12\auser.v1\x1a\x16common/v1/common.proto\"E\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\",\n" +
@@ -341,12 +318,9 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\x1bValidateCredentialsResponse\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\",\n" +
 	"\x12GetUserByIdRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\"\x7f\n" +
-	"\x13GetUserByIdResponse\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1c\n" +
-	"\tcreatedAt\x18\x03 \x01(\x03R\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\x04 \x01(\x03R\tupdatedAt2\x80\x02\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\">\n" +
+	"\x13GetUserByIdResponse\x12'\n" +
+	"\x04user\x18\x01 \x01(\v2\x13.common.v1.UserDataR\x04user2\x80\x02\n" +
 	"\vUserService\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.user.v1.CreateUserRequest\x1a\x1b.user.v1.CreateUserResponse\x12`\n" +
@@ -373,19 +347,21 @@ var file_user_v1_user_proto_goTypes = []any{
 	(*ValidateCredentialsResponse)(nil), // 3: user.v1.ValidateCredentialsResponse
 	(*GetUserByIdRequest)(nil),          // 4: user.v1.GetUserByIdRequest
 	(*GetUserByIdResponse)(nil),         // 5: user.v1.GetUserByIdResponse
+	(*v1.UserData)(nil),                 // 6: common.v1.UserData
 }
 var file_user_v1_user_proto_depIdxs = []int32{
-	0, // 0: user.v1.UserService.CreateUser:input_type -> user.v1.CreateUserRequest
-	2, // 1: user.v1.UserService.ValidateCredentials:input_type -> user.v1.ValidateCredentialsRequest
-	4, // 2: user.v1.UserService.GetUserById:input_type -> user.v1.GetUserByIdRequest
-	1, // 3: user.v1.UserService.CreateUser:output_type -> user.v1.CreateUserResponse
-	3, // 4: user.v1.UserService.ValidateCredentials:output_type -> user.v1.ValidateCredentialsResponse
-	5, // 5: user.v1.UserService.GetUserById:output_type -> user.v1.GetUserByIdResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: user.v1.GetUserByIdResponse.user:type_name -> common.v1.UserData
+	0, // 1: user.v1.UserService.CreateUser:input_type -> user.v1.CreateUserRequest
+	2, // 2: user.v1.UserService.ValidateCredentials:input_type -> user.v1.ValidateCredentialsRequest
+	4, // 3: user.v1.UserService.GetUserById:input_type -> user.v1.GetUserByIdRequest
+	1, // 4: user.v1.UserService.CreateUser:output_type -> user.v1.CreateUserResponse
+	3, // 5: user.v1.UserService.ValidateCredentials:output_type -> user.v1.ValidateCredentialsResponse
+	5, // 6: user.v1.UserService.GetUserById:output_type -> user.v1.GetUserByIdResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_user_v1_user_proto_init() }

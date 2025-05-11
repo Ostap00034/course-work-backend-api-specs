@@ -7,6 +7,7 @@
 package authv1
 
 import (
+	v1 "github.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -173,7 +174,8 @@ func (x *ValidateTokenRequest) GetToken() string {
 type ValidateTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	ExpiresAt     int64                  `protobuf:"varint,2,opt,name=expiresAt,proto3" json:"expiresAt,omitempty"` // unix timestamp
+	User          *v1.UserData           `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
+	ExpiresAt     int64                  `protobuf:"varint,3,opt,name=expiresAt,proto3" json:"expiresAt,omitempty"` // unix timestamp
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -213,6 +215,13 @@ func (x *ValidateTokenResponse) GetUserId() string {
 		return x.UserId
 	}
 	return ""
+}
+
+func (x *ValidateTokenResponse) GetUser() *v1.UserData {
+	if x != nil {
+		return x.User
+	}
+	return nil
 }
 
 func (x *ValidateTokenResponse) GetExpiresAt() int64 {
@@ -270,7 +279,7 @@ var File_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x1bgoogle/protobuf/empty.proto\"@\n" +
+	"\x12auth/v1/auth.proto\x12\aauth.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a\x16common/v1/common.proto\"@\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"C\n" +
@@ -278,10 +287,11 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1c\n" +
 	"\texpiresAt\x18\x02 \x01(\x03R\texpiresAt\",\n" +
 	"\x14ValidateTokenRequest\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"M\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\"v\n" +
 	"\x15ValidateTokenResponse\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1c\n" +
-	"\texpiresAt\x18\x02 \x01(\x03R\texpiresAt\"%\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12'\n" +
+	"\x04user\x18\x02 \x01(\v2\x13.common.v1.UserDataR\x04user\x12\x1c\n" +
+	"\texpiresAt\x18\x03 \x01(\x03R\texpiresAt\"%\n" +
 	"\rRevokeRequest\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token2\xcf\x01\n" +
 	"\vAuthService\x126\n" +
@@ -308,20 +318,22 @@ var file_auth_v1_auth_proto_goTypes = []any{
 	(*ValidateTokenRequest)(nil),  // 2: auth.v1.ValidateTokenRequest
 	(*ValidateTokenResponse)(nil), // 3: auth.v1.ValidateTokenResponse
 	(*RevokeRequest)(nil),         // 4: auth.v1.RevokeRequest
-	(*emptypb.Empty)(nil),         // 5: google.protobuf.Empty
+	(*v1.UserData)(nil),           // 5: common.v1.UserData
+	(*emptypb.Empty)(nil),         // 6: google.protobuf.Empty
 }
 var file_auth_v1_auth_proto_depIdxs = []int32{
-	0, // 0: auth.v1.AuthService.Login:input_type -> auth.v1.LoginRequest
-	2, // 1: auth.v1.AuthService.ValidateToken:input_type -> auth.v1.ValidateTokenRequest
-	4, // 2: auth.v1.AuthService.Revoke:input_type -> auth.v1.RevokeRequest
-	1, // 3: auth.v1.AuthService.Login:output_type -> auth.v1.LoginResponse
-	3, // 4: auth.v1.AuthService.ValidateToken:output_type -> auth.v1.ValidateTokenResponse
-	5, // 5: auth.v1.AuthService.Revoke:output_type -> google.protobuf.Empty
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	5, // 0: auth.v1.ValidateTokenResponse.user:type_name -> common.v1.UserData
+	0, // 1: auth.v1.AuthService.Login:input_type -> auth.v1.LoginRequest
+	2, // 2: auth.v1.AuthService.ValidateToken:input_type -> auth.v1.ValidateTokenRequest
+	4, // 3: auth.v1.AuthService.Revoke:input_type -> auth.v1.RevokeRequest
+	1, // 4: auth.v1.AuthService.Login:output_type -> auth.v1.LoginResponse
+	3, // 5: auth.v1.AuthService.ValidateToken:output_type -> auth.v1.ValidateTokenResponse
+	6, // 6: auth.v1.AuthService.Revoke:output_type -> google.protobuf.Empty
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_auth_v1_auth_proto_init() }

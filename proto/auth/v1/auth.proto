@@ -5,6 +5,7 @@ package auth.v1;
 option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/auth/v1;authv1";
 
 import "google/protobuf/empty.proto";
+import "common/v1/common.proto";
 
 service AuthService {
   // Логинимся по email+паролю → получаем токен и срок жизни
@@ -31,7 +32,8 @@ message ValidateTokenRequest {
 
 message ValidateTokenResponse {
   string userId    = 1;
-  int64  expiresAt = 2; // unix timestamp
+  common.v1.UserData user = 2;
+  int64  expiresAt = 3; // unix timestamp
 }
 
 message RevokeRequest {

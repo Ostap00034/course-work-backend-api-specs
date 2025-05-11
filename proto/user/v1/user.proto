@@ -4,6 +4,8 @@ package user.v1;
 
 option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/user/v1;userv1";
 
+import "common/v1/common.proto";
+
 service UserService {
   // Регистрируем нового пользователя
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
@@ -36,8 +38,5 @@ message GetUserByIdRequest {
 }
 
 message GetUserByIdResponse {
-  string userId    = 1;
-  string email     = 2;
-  int64  createdAt = 3;
-  int64  updatedAt = 4;
+  common.v1.UserData user = 1;
 }
