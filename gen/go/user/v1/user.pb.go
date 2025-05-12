@@ -74,6 +74,138 @@ func (x *CreateUserRequest) GetPassword() string {
 	return ""
 }
 
+type ChangeUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	User          *v1.UserData           `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserRequest) Reset() {
+	*x = ChangeUserRequest{}
+	mi := &file_user_v1_user_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserRequest) ProtoMessage() {}
+
+func (x *ChangeUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_v1_user_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserRequest.ProtoReflect.Descriptor instead.
+func (*ChangeUserRequest) Descriptor() ([]byte, []int) {
+	return file_user_v1_user_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ChangeUserRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *ChangeUserRequest) GetUser() *v1.UserData {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+type GetUsersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUsersRequest) Reset() {
+	*x = GetUsersRequest{}
+	mi := &file_user_v1_user_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUsersRequest) ProtoMessage() {}
+
+func (x *GetUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_v1_user_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetUsersRequest) Descriptor() ([]byte, []int) {
+	return file_user_v1_user_proto_rawDescGZIP(), []int{2}
+}
+
+type GetUsersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Users         []*v1.UserData         `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUsersResponse) Reset() {
+	*x = GetUsersResponse{}
+	mi := &file_user_v1_user_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUsersResponse) ProtoMessage() {}
+
+func (x *GetUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_v1_user_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetUsersResponse) Descriptor() ([]byte, []int) {
+	return file_user_v1_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetUsersResponse) GetUsers() []*v1.UserData {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
 type CreateUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
@@ -83,7 +215,7 @@ type CreateUserResponse struct {
 
 func (x *CreateUserResponse) Reset() {
 	*x = CreateUserResponse{}
-	mi := &file_user_v1_user_proto_msgTypes[1]
+	mi := &file_user_v1_user_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -95,7 +227,7 @@ func (x *CreateUserResponse) String() string {
 func (*CreateUserResponse) ProtoMessage() {}
 
 func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_v1_user_proto_msgTypes[1]
+	mi := &file_user_v1_user_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -108,7 +240,7 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserResponse) Descriptor() ([]byte, []int) {
-	return file_user_v1_user_proto_rawDescGZIP(), []int{1}
+	return file_user_v1_user_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateUserResponse) GetUserId() string {
@@ -128,7 +260,7 @@ type ValidateCredentialsRequest struct {
 
 func (x *ValidateCredentialsRequest) Reset() {
 	*x = ValidateCredentialsRequest{}
-	mi := &file_user_v1_user_proto_msgTypes[2]
+	mi := &file_user_v1_user_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -140,7 +272,7 @@ func (x *ValidateCredentialsRequest) String() string {
 func (*ValidateCredentialsRequest) ProtoMessage() {}
 
 func (x *ValidateCredentialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_v1_user_proto_msgTypes[2]
+	mi := &file_user_v1_user_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -153,7 +285,7 @@ func (x *ValidateCredentialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateCredentialsRequest.ProtoReflect.Descriptor instead.
 func (*ValidateCredentialsRequest) Descriptor() ([]byte, []int) {
-	return file_user_v1_user_proto_rawDescGZIP(), []int{2}
+	return file_user_v1_user_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ValidateCredentialsRequest) GetEmail() string {
@@ -179,7 +311,7 @@ type ValidateCredentialsResponse struct {
 
 func (x *ValidateCredentialsResponse) Reset() {
 	*x = ValidateCredentialsResponse{}
-	mi := &file_user_v1_user_proto_msgTypes[3]
+	mi := &file_user_v1_user_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -191,7 +323,7 @@ func (x *ValidateCredentialsResponse) String() string {
 func (*ValidateCredentialsResponse) ProtoMessage() {}
 
 func (x *ValidateCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_v1_user_proto_msgTypes[3]
+	mi := &file_user_v1_user_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -204,7 +336,7 @@ func (x *ValidateCredentialsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*ValidateCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_user_v1_user_proto_rawDescGZIP(), []int{3}
+	return file_user_v1_user_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ValidateCredentialsResponse) GetUserId() string {
@@ -223,7 +355,7 @@ type GetUserByIdRequest struct {
 
 func (x *GetUserByIdRequest) Reset() {
 	*x = GetUserByIdRequest{}
-	mi := &file_user_v1_user_proto_msgTypes[4]
+	mi := &file_user_v1_user_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -235,7 +367,7 @@ func (x *GetUserByIdRequest) String() string {
 func (*GetUserByIdRequest) ProtoMessage() {}
 
 func (x *GetUserByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_v1_user_proto_msgTypes[4]
+	mi := &file_user_v1_user_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -248,7 +380,7 @@ func (x *GetUserByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetUserByIdRequest) Descriptor() ([]byte, []int) {
-	return file_user_v1_user_proto_rawDescGZIP(), []int{4}
+	return file_user_v1_user_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetUserByIdRequest) GetUserId() string {
@@ -267,7 +399,7 @@ type GetUserByIdResponse struct {
 
 func (x *GetUserByIdResponse) Reset() {
 	*x = GetUserByIdResponse{}
-	mi := &file_user_v1_user_proto_msgTypes[5]
+	mi := &file_user_v1_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -279,7 +411,7 @@ func (x *GetUserByIdResponse) String() string {
 func (*GetUserByIdResponse) ProtoMessage() {}
 
 func (x *GetUserByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_v1_user_proto_msgTypes[5]
+	mi := &file_user_v1_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -292,7 +424,7 @@ func (x *GetUserByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetUserByIdResponse) Descriptor() ([]byte, []int) {
-	return file_user_v1_user_proto_rawDescGZIP(), []int{5}
+	return file_user_v1_user_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetUserByIdResponse) GetUser() *v1.UserData {
@@ -309,7 +441,13 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\x12user/v1/user.proto\x12\auser.v1\x1a\x16common/v1/common.proto\"E\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\",\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"T\n" +
+	"\x11ChangeUserRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12'\n" +
+	"\x04user\x18\x02 \x01(\v2\x13.common.v1.UserDataR\x04user\"\x11\n" +
+	"\x0fGetUsersRequest\"=\n" +
+	"\x10GetUsersResponse\x12)\n" +
+	"\x05users\x18\x01 \x03(\v2\x13.common.v1.UserDataR\x05users\",\n" +
 	"\x12CreateUserResponse\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\"N\n" +
 	"\x1aValidateCredentialsRequest\x12\x14\n" +
@@ -320,12 +458,15 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\x12GetUserByIdRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\">\n" +
 	"\x13GetUserByIdResponse\x12'\n" +
-	"\x04user\x18\x01 \x01(\v2\x13.common.v1.UserDataR\x04user2\x80\x02\n" +
+	"\x04user\x18\x01 \x01(\v2\x13.common.v1.UserDataR\x04user2\x89\x03\n" +
 	"\vUserService\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.user.v1.CreateUserRequest\x1a\x1b.user.v1.CreateUserResponse\x12`\n" +
 	"\x13ValidateCredentials\x12#.user.v1.ValidateCredentialsRequest\x1a$.user.v1.ValidateCredentialsResponse\x12H\n" +
-	"\vGetUserById\x12\x1b.user.v1.GetUserByIdRequest\x1a\x1c.user.v1.GetUserByIdResponseBKZIgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/user/v1;userv1b\x06proto3"
+	"\vGetUserById\x12\x1b.user.v1.GetUserByIdRequest\x1a\x1c.user.v1.GetUserByIdResponse\x12?\n" +
+	"\bGetUsers\x12\x18.user.v1.GetUsersRequest\x1a\x19.user.v1.GetUsersResponse\x12F\n" +
+	"\n" +
+	"ChangeUser\x12\x1a.user.v1.ChangeUserRequest\x1a\x1c.user.v1.GetUserByIdResponseBKZIgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/user/v1;userv1b\x06proto3"
 
 var (
 	file_user_v1_user_proto_rawDescOnce sync.Once
@@ -339,29 +480,38 @@ func file_user_v1_user_proto_rawDescGZIP() []byte {
 	return file_user_v1_user_proto_rawDescData
 }
 
-var file_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_user_v1_user_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),           // 0: user.v1.CreateUserRequest
-	(*CreateUserResponse)(nil),          // 1: user.v1.CreateUserResponse
-	(*ValidateCredentialsRequest)(nil),  // 2: user.v1.ValidateCredentialsRequest
-	(*ValidateCredentialsResponse)(nil), // 3: user.v1.ValidateCredentialsResponse
-	(*GetUserByIdRequest)(nil),          // 4: user.v1.GetUserByIdRequest
-	(*GetUserByIdResponse)(nil),         // 5: user.v1.GetUserByIdResponse
-	(*v1.UserData)(nil),                 // 6: common.v1.UserData
+	(*ChangeUserRequest)(nil),           // 1: user.v1.ChangeUserRequest
+	(*GetUsersRequest)(nil),             // 2: user.v1.GetUsersRequest
+	(*GetUsersResponse)(nil),            // 3: user.v1.GetUsersResponse
+	(*CreateUserResponse)(nil),          // 4: user.v1.CreateUserResponse
+	(*ValidateCredentialsRequest)(nil),  // 5: user.v1.ValidateCredentialsRequest
+	(*ValidateCredentialsResponse)(nil), // 6: user.v1.ValidateCredentialsResponse
+	(*GetUserByIdRequest)(nil),          // 7: user.v1.GetUserByIdRequest
+	(*GetUserByIdResponse)(nil),         // 8: user.v1.GetUserByIdResponse
+	(*v1.UserData)(nil),                 // 9: common.v1.UserData
 }
 var file_user_v1_user_proto_depIdxs = []int32{
-	6, // 0: user.v1.GetUserByIdResponse.user:type_name -> common.v1.UserData
-	0, // 1: user.v1.UserService.CreateUser:input_type -> user.v1.CreateUserRequest
-	2, // 2: user.v1.UserService.ValidateCredentials:input_type -> user.v1.ValidateCredentialsRequest
-	4, // 3: user.v1.UserService.GetUserById:input_type -> user.v1.GetUserByIdRequest
-	1, // 4: user.v1.UserService.CreateUser:output_type -> user.v1.CreateUserResponse
-	3, // 5: user.v1.UserService.ValidateCredentials:output_type -> user.v1.ValidateCredentialsResponse
-	5, // 6: user.v1.UserService.GetUserById:output_type -> user.v1.GetUserByIdResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	9, // 0: user.v1.ChangeUserRequest.user:type_name -> common.v1.UserData
+	9, // 1: user.v1.GetUsersResponse.users:type_name -> common.v1.UserData
+	9, // 2: user.v1.GetUserByIdResponse.user:type_name -> common.v1.UserData
+	0, // 3: user.v1.UserService.CreateUser:input_type -> user.v1.CreateUserRequest
+	5, // 4: user.v1.UserService.ValidateCredentials:input_type -> user.v1.ValidateCredentialsRequest
+	7, // 5: user.v1.UserService.GetUserById:input_type -> user.v1.GetUserByIdRequest
+	2, // 6: user.v1.UserService.GetUsers:input_type -> user.v1.GetUsersRequest
+	1, // 7: user.v1.UserService.ChangeUser:input_type -> user.v1.ChangeUserRequest
+	4, // 8: user.v1.UserService.CreateUser:output_type -> user.v1.CreateUserResponse
+	6, // 9: user.v1.UserService.ValidateCredentials:output_type -> user.v1.ValidateCredentialsResponse
+	8, // 10: user.v1.UserService.GetUserById:output_type -> user.v1.GetUserByIdResponse
+	3, // 11: user.v1.UserService.GetUsers:output_type -> user.v1.GetUsersResponse
+	8, // 12: user.v1.UserService.ChangeUser:output_type -> user.v1.GetUserByIdResponse
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_user_v1_user_proto_init() }
@@ -375,7 +525,7 @@ func file_user_v1_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_v1_user_proto_rawDesc), len(file_user_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

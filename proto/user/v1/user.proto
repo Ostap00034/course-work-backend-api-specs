@@ -13,11 +13,28 @@ service UserService {
   rpc ValidateCredentials(ValidateCredentialsRequest) returns (ValidateCredentialsResponse);
   // Получаем данные пользователя по ID
   rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);
+
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
+
+  rpc ChangeUser(ChangeUserRequest) returns (GetUserByIdResponse);
 }
 
 message CreateUserRequest {
   string email    = 1;
   string password = 2;
+}
+
+message ChangeUserRequest {
+  string userId = 1;
+  common.v1.UserData user = 2;
+}
+
+message GetUsersRequest {
+
+}
+
+message GetUsersResponse {
+  repeated common.v1.UserData users = 1;
 }
 
 message CreateUserResponse {
