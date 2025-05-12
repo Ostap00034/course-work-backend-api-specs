@@ -25,7 +25,8 @@ const (
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Fio           string                 `protobuf:"bytes,2,opt,name=fio,proto3" json:"fio,omitempty"`
+	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -63,6 +64,13 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 func (x *CreateUserRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetFio() string {
+	if x != nil {
+		return x.Fio
 	}
 	return ""
 }
@@ -438,10 +446,11 @@ var File_user_v1_user_proto protoreflect.FileDescriptor
 
 const file_user_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12user/v1/user.proto\x12\auser.v1\x1a\x16common/v1/common.proto\"E\n" +
+	"\x12user/v1/user.proto\x12\auser.v1\x1a\x16common/v1/common.proto\"W\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"T\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x10\n" +
+	"\x03fio\x18\x02 \x01(\tR\x03fio\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\"T\n" +
 	"\x11ChangeUserRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12'\n" +
 	"\x04user\x18\x02 \x01(\v2\x13.common.v1.UserDataR\x04user\"\x11\n" +
