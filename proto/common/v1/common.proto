@@ -9,5 +9,6 @@ option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/
 message UserData {
   string id    = 1;
   string email = 2;
-  string role  = 3;
+  string fio   = 3;
+  string role  = 4;
 }

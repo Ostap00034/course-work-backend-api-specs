@@ -26,7 +26,8 @@ type UserData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Role          string                 `protobuf:"bytes,3,opt,name=role,proto3" json:"role,omitempty"`
+	Fio           string                 `protobuf:"bytes,3,opt,name=fio,proto3" json:"fio,omitempty"`
+	Role          string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -75,6 +76,13 @@ func (x *UserData) GetEmail() string {
 	return ""
 }
 
+func (x *UserData) GetFio() string {
+	if x != nil {
+		return x.Fio
+	}
+	return ""
+}
+
 func (x *UserData) GetRole() string {
 	if x != nil {
 		return x.Role
@@ -86,11 +94,12 @@ var File_common_v1_common_proto protoreflect.FileDescriptor
 
 const file_common_v1_common_proto_rawDesc = "" +
 	"\n" +
-	"\x16common/v1/common.proto\x12\tcommon.v1\"D\n" +
+	"\x16common/v1/common.proto\x12\tcommon.v1\"V\n" +
 	"\bUserData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\tR\x04roleBOZMgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1;commonv1b\x06proto3"
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\x10\n" +
+	"\x03fio\x18\x03 \x01(\tR\x03fio\x12\x12\n" +
+	"\x04role\x18\x04 \x01(\tR\x04roleBOZMgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1;commonv1b\x06proto3"
 
 var (
 	file_common_v1_common_proto_rawDescOnce sync.Once
