@@ -7,8 +7,19 @@ option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/
 
 // Общая модель пользователя
 message UserData {
-  string id    = 1;
+  string id    = 1; 
   string email = 2;
   string fio   = 3;
   string role  = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+}
+
+// Общая модель категории
+message CategoryData {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
 }

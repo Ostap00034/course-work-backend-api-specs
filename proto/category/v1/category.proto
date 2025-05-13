@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package category.v1;
+
+option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/category/v1;categoryv1";
+
+import "common/v1/common.proto";
+
+service CategoryService {
+  rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse);
+  rpc GetCategories(GetCategoriesRequest) returns (GetCategoriesResponse);
+  rpc GetCategoryById(GetCategoryByIdRequest) returns (GetCategoryByIdResponse);
+  rpc UpdateCategory(UpdateCategoryRequest) returns (GetCategoryByIdResponse);
+  rpc DeleteCategory(DeleteCategoryRequest) returns (DeleteCategoryResponse);
+}
+
+message CreateCategoryRequest {
+  string name = 1;
+  string description = 2;
+}
+
+message CreateCategoryResponse {
+  common.v1.CategoryData category = 1;
+}
+
+message GetCategoriesRequest {
+  
+}
+
+message GetCategoriesResponse {
+  repeated common.v1.CategoryData categories = 1;
+}
+
+message GetCategoryByIdRequest {
+  string id = 1;
+}
+
+message GetCategoryByIdResponse {
+  common.v1.CategoryData category = 1;
+}
+
+message UpdateCategoryRequest {
+  string id = 1;
+  common.v1.CategoryData category = 2;
+}
+
+message DeleteCategoryRequest {
+  string id = 1;
+}
+
+message DeleteCategoryResponse {
+
+}
