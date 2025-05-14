@@ -49,6 +49,7 @@ message ValidateCredentialsRequest {
 
 message ValidateCredentialsResponse {
   string userId = 1;
+  string role = 2;
 }
 
 message GetUserByIdRequest {

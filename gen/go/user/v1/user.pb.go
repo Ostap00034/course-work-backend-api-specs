@@ -313,6 +313,7 @@ func (x *ValidateCredentialsRequest) GetPassword() string {
 type ValidateCredentialsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	Role          string                 `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -350,6 +351,13 @@ func (*ValidateCredentialsResponse) Descriptor() ([]byte, []int) {
 func (x *ValidateCredentialsResponse) GetUserId() string {
 	if x != nil {
 		return x.UserId
+	}
+	return ""
+}
+
+func (x *ValidateCredentialsResponse) GetRole() string {
+	if x != nil {
+		return x.Role
 	}
 	return ""
 }
@@ -461,9 +469,10 @@ const file_user_v1_user_proto_rawDesc = "" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\"N\n" +
 	"\x1aValidateCredentialsRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"5\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"I\n" +
 	"\x1bValidateCredentialsResponse\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\",\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04role\x18\x02 \x01(\tR\x04role\",\n" +
 	"\x12GetUserByIdRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\">\n" +
 	"\x13GetUserByIdResponse\x12'\n" +
