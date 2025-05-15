@@ -72,7 +72,16 @@ message GetOrderByIdResponse {
 
 message UpdateOrderRequest {
   string id = 1;
-  common.v1.OrderData Order = 2;
+  string title = 2;
+  string description = 3;
+  string address = 4;
+  string longitude = 5;
+  string latitude = 6;
+  string status = 7;
+  float price = 8;
+  string category_id = 9;
+  string client_id = 10;
+  string master_id = 11;
 }
 
 message DeleteOrderRequest {

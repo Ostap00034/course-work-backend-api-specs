@@ -577,7 +577,16 @@ func (x *GetOrderByIdResponse) GetOrder() *v1.OrderData {
 type UpdateOrderRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Order         *v1.OrderData          `protobuf:"bytes,2,opt,name=Order,proto3" json:"Order,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Address       string                 `protobuf:"bytes,4,opt,name=address,proto3" json:"address,omitempty"`
+	Longitude     string                 `protobuf:"bytes,5,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Latitude      string                 `protobuf:"bytes,6,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Status        string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
+	Price         float32                `protobuf:"fixed32,8,opt,name=price,proto3" json:"price,omitempty"`
+	CategoryId    string                 `protobuf:"bytes,9,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	ClientId      string                 `protobuf:"bytes,10,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	MasterId      string                 `protobuf:"bytes,11,opt,name=master_id,json=masterId,proto3" json:"master_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -619,11 +628,74 @@ func (x *UpdateOrderRequest) GetId() string {
 	return ""
 }
 
-func (x *UpdateOrderRequest) GetOrder() *v1.OrderData {
+func (x *UpdateOrderRequest) GetTitle() string {
 	if x != nil {
-		return x.Order
+		return x.Title
 	}
-	return nil
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetLongitude() string {
+	if x != nil {
+		return x.Longitude
+	}
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetLatitude() string {
+	if x != nil {
+		return x.Latitude
+	}
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetPrice() float32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *UpdateOrderRequest) GetCategoryId() string {
+	if x != nil {
+		return x.CategoryId
+	}
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *UpdateOrderRequest) GetMasterId() string {
+	if x != nil {
+		return x.MasterId
+	}
+	return ""
 }
 
 type DeleteOrderRequest struct {
@@ -745,10 +817,21 @@ const file_order_v1_order_proto_rawDesc = "" +
 	"\x13GetOrderByIdRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"B\n" +
 	"\x14GetOrderByIdResponse\x12*\n" +
-	"\x05Order\x18\x01 \x01(\v2\x14.common.v1.OrderDataR\x05Order\"P\n" +
+	"\x05Order\x18\x01 \x01(\v2\x14.common.v1.OrderDataR\x05Order\"\xb9\x02\n" +
 	"\x12UpdateOrderRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12*\n" +
-	"\x05Order\x18\x02 \x01(\v2\x14.common.v1.OrderDataR\x05Order\"$\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x18\n" +
+	"\aaddress\x18\x04 \x01(\tR\aaddress\x12\x1c\n" +
+	"\tlongitude\x18\x05 \x01(\tR\tlongitude\x12\x1a\n" +
+	"\blatitude\x18\x06 \x01(\tR\blatitude\x12\x16\n" +
+	"\x06status\x18\a \x01(\tR\x06status\x12\x14\n" +
+	"\x05price\x18\b \x01(\x02R\x05price\x12\x1f\n" +
+	"\vcategory_id\x18\t \x01(\tR\n" +
+	"categoryId\x12\x1b\n" +
+	"\tclient_id\x18\n" +
+	" \x01(\tR\bclientId\x12\x1b\n" +
+	"\tmaster_id\x18\v \x01(\tR\bmasterId\"$\n" +
 	"\x12DeleteOrderRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\x15\n" +
 	"\x13DeleteOrderResponse2\xb8\x04\n" +
@@ -796,26 +879,25 @@ var file_order_v1_order_proto_depIdxs = []int32{
 	13, // 2: order.v1.CreateOrderResponse.Order:type_name -> common.v1.OrderData
 	13, // 3: order.v1.GetOrdersResponse.Orders:type_name -> common.v1.OrderData
 	13, // 4: order.v1.GetOrderByIdResponse.Order:type_name -> common.v1.OrderData
-	13, // 5: order.v1.UpdateOrderRequest.Order:type_name -> common.v1.OrderData
-	4,  // 6: order.v1.OrderService.CreateOrder:input_type -> order.v1.CreateOrderRequest
-	6,  // 7: order.v1.OrderService.GetOrders:input_type -> order.v1.GetOrdersRequest
-	8,  // 8: order.v1.OrderService.GetOrderById:input_type -> order.v1.GetOrderByIdRequest
-	10, // 9: order.v1.OrderService.UpdateOrder:input_type -> order.v1.UpdateOrderRequest
-	11, // 10: order.v1.OrderService.DeleteOrder:input_type -> order.v1.DeleteOrderRequest
-	0,  // 11: order.v1.OrderService.GetMyOrders:input_type -> order.v1.GetMyOrdersRequest
-	2,  // 12: order.v1.OrderService.GetMyFinishedOrders:input_type -> order.v1.GetMyFinishedOrdersRequest
-	5,  // 13: order.v1.OrderService.CreateOrder:output_type -> order.v1.CreateOrderResponse
-	7,  // 14: order.v1.OrderService.GetOrders:output_type -> order.v1.GetOrdersResponse
-	9,  // 15: order.v1.OrderService.GetOrderById:output_type -> order.v1.GetOrderByIdResponse
-	9,  // 16: order.v1.OrderService.UpdateOrder:output_type -> order.v1.GetOrderByIdResponse
-	12, // 17: order.v1.OrderService.DeleteOrder:output_type -> order.v1.DeleteOrderResponse
-	1,  // 18: order.v1.OrderService.GetMyOrders:output_type -> order.v1.GetMyOrdersResponse
-	3,  // 19: order.v1.OrderService.GetMyFinishedOrders:output_type -> order.v1.GetMyFinishedOrdersResponse
-	13, // [13:20] is the sub-list for method output_type
-	6,  // [6:13] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	4,  // 5: order.v1.OrderService.CreateOrder:input_type -> order.v1.CreateOrderRequest
+	6,  // 6: order.v1.OrderService.GetOrders:input_type -> order.v1.GetOrdersRequest
+	8,  // 7: order.v1.OrderService.GetOrderById:input_type -> order.v1.GetOrderByIdRequest
+	10, // 8: order.v1.OrderService.UpdateOrder:input_type -> order.v1.UpdateOrderRequest
+	11, // 9: order.v1.OrderService.DeleteOrder:input_type -> order.v1.DeleteOrderRequest
+	0,  // 10: order.v1.OrderService.GetMyOrders:input_type -> order.v1.GetMyOrdersRequest
+	2,  // 11: order.v1.OrderService.GetMyFinishedOrders:input_type -> order.v1.GetMyFinishedOrdersRequest
+	5,  // 12: order.v1.OrderService.CreateOrder:output_type -> order.v1.CreateOrderResponse
+	7,  // 13: order.v1.OrderService.GetOrders:output_type -> order.v1.GetOrdersResponse
+	9,  // 14: order.v1.OrderService.GetOrderById:output_type -> order.v1.GetOrderByIdResponse
+	9,  // 15: order.v1.OrderService.UpdateOrder:output_type -> order.v1.GetOrderByIdResponse
+	12, // 16: order.v1.OrderService.DeleteOrder:output_type -> order.v1.DeleteOrderResponse
+	1,  // 17: order.v1.OrderService.GetMyOrders:output_type -> order.v1.GetMyOrdersResponse
+	3,  // 18: order.v1.OrderService.GetMyFinishedOrders:output_type -> order.v1.GetMyFinishedOrdersResponse
+	12, // [12:19] is the sub-list for method output_type
+	5,  // [5:12] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_order_v1_order_proto_init() }
