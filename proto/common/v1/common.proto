@@ -33,7 +33,7 @@ message OrderData {
   string longitude = 5;
   string latitude = 6;
   string status = 7;
-  string price = 8;
+  float price = 8;
   string category_id = 9;
   UserData client = 10;
   UserData master = 11;

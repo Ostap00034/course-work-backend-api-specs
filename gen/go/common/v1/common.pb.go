@@ -193,7 +193,7 @@ type OrderData struct {
 	Longitude     string                 `protobuf:"bytes,5,opt,name=longitude,proto3" json:"longitude,omitempty"`
 	Latitude      string                 `protobuf:"bytes,6,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	Status        string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
-	Price         string                 `protobuf:"bytes,8,opt,name=price,proto3" json:"price,omitempty"`
+	Price         float32                `protobuf:"fixed32,8,opt,name=price,proto3" json:"price,omitempty"`
 	CategoryId    string                 `protobuf:"bytes,9,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
 	Client        *UserData              `protobuf:"bytes,10,opt,name=client,proto3" json:"client,omitempty"`
 	Master        *UserData              `protobuf:"bytes,11,opt,name=master,proto3" json:"master,omitempty"`
@@ -282,11 +282,11 @@ func (x *OrderData) GetStatus() string {
 	return ""
 }
 
-func (x *OrderData) GetPrice() string {
+func (x *OrderData) GetPrice() float32 {
 	if x != nil {
 		return x.Price
 	}
-	return ""
+	return 0
 }
 
 func (x *OrderData) GetCategoryId() string {
@@ -350,7 +350,7 @@ const file_common_v1_common_proto_rawDesc = "" +
 	"\tlongitude\x18\x05 \x01(\tR\tlongitude\x12\x1a\n" +
 	"\blatitude\x18\x06 \x01(\tR\blatitude\x12\x16\n" +
 	"\x06status\x18\a \x01(\tR\x06status\x12\x14\n" +
-	"\x05price\x18\b \x01(\tR\x05price\x12\x1f\n" +
+	"\x05price\x18\b \x01(\x02R\x05price\x12\x1f\n" +
 	"\vcategory_id\x18\t \x01(\tR\n" +
 	"categoryId\x12+\n" +
 	"\x06client\x18\n" +
