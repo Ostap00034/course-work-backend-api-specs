@@ -42,8 +42,8 @@ message CreateOrderRequest {
   string latitude = 6;
   string status = 7;
   repeated string categories_ids = 8;
-  repeated string client_id = 9;
-  repeated string master_id = 10;
+  string client_id = 9;
+  string master_id = 10;
 }
 
 message CreateOrderResponse {
