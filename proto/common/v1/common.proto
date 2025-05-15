@@ -23,3 +23,20 @@ message CategoryData {
   string createdAt = 4;
   string updatedAt = 5;
 }
+
+// Общая модель заказа
+message OrderData {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string address = 4;
+  string longitude = 5;
+  string latitude = 6;
+  string status = 7;
+  string price = 8;
+  string category_id = 9;
+  UserData client = 10;
+  UserData master = 11;
+  string createdAt = 12;
+  string updatedAt = 13;
+}

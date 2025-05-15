@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package order.v1;
+
+option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/order/v1;orderv1";
+
+import "common/v1/common.proto";
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse);
+  rpc GetOrderById(GetOrderByIdRequest) returns (GetOrderByIdResponse);
+  rpc UpdateOrder(UpdateOrderRequest) returns (GetOrderByIdResponse);
+  rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse);
+  rpc GetMyOrders(GetMyOrdersRequest) returns (GetMyOrdersResponse);
+  rpc GetMyFinishedOrders(GetMyFinishedOrdersRequest) returns (GetMyFinishedOrdersResponse);
+}
+
+message GetMyOrdersRequest {
+  string user_id = 1;
+  string status = 2;
+}
+
+message GetMyOrdersResponse {
+  repeated common.v1.OrderData Orders = 1;
+}
+
+message GetMyFinishedOrdersRequest {
+  string user_id = 1;
+}
+
+message GetMyFinishedOrdersResponse {
+  repeated common.v1.OrderData Orders = 1;
+}
+
+message CreateOrderRequest {
+  string title = 1;
+  string description = 2;
+  float price = 3;
+  string address = 4;
+  string longitude = 5;
+  string latitude = 6;
+  string status = 7;
+  repeated string categories_ids = 8;
+  repeated string client_id = 9;
+  repeated string master_id = 10;
+}
+
+message CreateOrderResponse {
+  common.v1.OrderData Order = 1;
+}
+
+message GetOrdersRequest {
+  repeated string categories_ids = 1;
+}
+
+message GetOrdersResponse {
+  repeated common.v1.OrderData Orders = 1;
+}
+
+message GetOrderByIdRequest {
+  string id = 1;
+}
+
+message GetOrderByIdResponse {
+  common.v1.OrderData Order = 1;
+}
+
+message UpdateOrderRequest {
+  string id = 1;
+  common.v1.OrderData Order = 2;
+}
+
+message DeleteOrderRequest {
+  string id = 1;
+}
+
+message DeleteOrderResponse {
+
+}
