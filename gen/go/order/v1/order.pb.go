@@ -216,8 +216,8 @@ type CreateOrderRequest struct {
 	Latitude      string                 `protobuf:"bytes,6,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	Status        string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
 	CategoriesIds []string               `protobuf:"bytes,8,rep,name=categories_ids,json=categoriesIds,proto3" json:"categories_ids,omitempty"`
-	ClientId      []string               `protobuf:"bytes,9,rep,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
-	MasterId      []string               `protobuf:"bytes,10,rep,name=master_id,json=masterId,proto3" json:"master_id,omitempty"`
+	ClientId      string                 `protobuf:"bytes,9,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	MasterId      string                 `protobuf:"bytes,10,opt,name=master_id,json=masterId,proto3" json:"master_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -308,18 +308,18 @@ func (x *CreateOrderRequest) GetCategoriesIds() []string {
 	return nil
 }
 
-func (x *CreateOrderRequest) GetClientId() []string {
+func (x *CreateOrderRequest) GetClientId() string {
 	if x != nil {
 		return x.ClientId
 	}
-	return nil
+	return ""
 }
 
-func (x *CreateOrderRequest) GetMasterId() []string {
+func (x *CreateOrderRequest) GetMasterId() string {
 	if x != nil {
 		return x.MasterId
 	}
-	return nil
+	return ""
 }
 
 type CreateOrderResponse struct {
@@ -697,9 +697,9 @@ const file_order_v1_order_proto_rawDesc = "" +
 	"\blatitude\x18\x06 \x01(\tR\blatitude\x12\x16\n" +
 	"\x06status\x18\a \x01(\tR\x06status\x12%\n" +
 	"\x0ecategories_ids\x18\b \x03(\tR\rcategoriesIds\x12\x1b\n" +
-	"\tclient_id\x18\t \x03(\tR\bclientId\x12\x1b\n" +
+	"\tclient_id\x18\t \x01(\tR\bclientId\x12\x1b\n" +
 	"\tmaster_id\x18\n" +
-	" \x03(\tR\bmasterId\"A\n" +
+	" \x01(\tR\bmasterId\"A\n" +
 	"\x13CreateOrderResponse\x12*\n" +
 	"\x05Order\x18\x01 \x01(\v2\x14.common.v1.OrderDataR\x05Order\"9\n" +
 	"\x10GetOrdersRequest\x12%\n" +
