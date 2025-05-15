@@ -26,6 +26,7 @@ type GetMyOrdersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	CategoriesIds []string               `protobuf:"bytes,3,rep,name=categories_ids,json=categoriesIds,proto3" json:"categories_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -72,6 +73,13 @@ func (x *GetMyOrdersRequest) GetStatus() string {
 		return x.Status
 	}
 	return ""
+}
+
+func (x *GetMyOrdersRequest) GetCategoriesIds() []string {
+	if x != nil {
+		return x.CategoriesIds
+	}
+	return nil
 }
 
 type GetMyOrdersResponse struct {
@@ -369,6 +377,9 @@ func (x *CreateOrderResponse) GetOrder() *v1.OrderData {
 type GetOrdersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CategoriesIds []string               `protobuf:"bytes,1,rep,name=categories_ids,json=categoriesIds,proto3" json:"categories_ids,omitempty"`
+	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	ClientId      string                 `protobuf:"bytes,3,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	MasterId      string                 `protobuf:"bytes,4,opt,name=master_id,json=masterId,proto3" json:"master_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -408,6 +419,27 @@ func (x *GetOrdersRequest) GetCategoriesIds() []string {
 		return x.CategoriesIds
 	}
 	return nil
+}
+
+func (x *GetOrdersRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *GetOrdersRequest) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *GetOrdersRequest) GetMasterId() string {
+	if x != nil {
+		return x.MasterId
+	}
+	return ""
 }
 
 type GetOrdersResponse struct {
@@ -678,10 +710,11 @@ var File_order_v1_order_proto protoreflect.FileDescriptor
 
 const file_order_v1_order_proto_rawDesc = "" +
 	"\n" +
-	"\x14order/v1/order.proto\x12\border.v1\x1a\x16common/v1/common.proto\"E\n" +
+	"\x14order/v1/order.proto\x12\border.v1\x1a\x16common/v1/common.proto\"l\n" +
 	"\x12GetMyOrdersRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status\"C\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\x12%\n" +
+	"\x0ecategories_ids\x18\x03 \x03(\tR\rcategoriesIds\"C\n" +
 	"\x13GetMyOrdersResponse\x12,\n" +
 	"\x06Orders\x18\x01 \x03(\v2\x14.common.v1.OrderDataR\x06Orders\"5\n" +
 	"\x1aGetMyFinishedOrdersRequest\x12\x17\n" +
@@ -701,9 +734,12 @@ const file_order_v1_order_proto_rawDesc = "" +
 	"\tmaster_id\x18\n" +
 	" \x01(\tR\bmasterId\"A\n" +
 	"\x13CreateOrderResponse\x12*\n" +
-	"\x05Order\x18\x01 \x01(\v2\x14.common.v1.OrderDataR\x05Order\"9\n" +
+	"\x05Order\x18\x01 \x01(\v2\x14.common.v1.OrderDataR\x05Order\"\x8b\x01\n" +
 	"\x10GetOrdersRequest\x12%\n" +
-	"\x0ecategories_ids\x18\x01 \x03(\tR\rcategoriesIds\"A\n" +
+	"\x0ecategories_ids\x18\x01 \x03(\tR\rcategoriesIds\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\x12\x1b\n" +
+	"\tclient_id\x18\x03 \x01(\tR\bclientId\x12\x1b\n" +
+	"\tmaster_id\x18\x04 \x01(\tR\bmasterId\"A\n" +
 	"\x11GetOrdersResponse\x12,\n" +
 	"\x06Orders\x18\x01 \x03(\v2\x14.common.v1.OrderDataR\x06Orders\"%\n" +
 	"\x13GetOrderByIdRequest\x12\x0e\n" +

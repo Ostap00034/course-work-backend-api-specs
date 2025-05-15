@@ -19,6 +19,7 @@ service OrderService {
 message GetMyOrdersRequest {
   string user_id = 1;
   string status = 2;
+  repeated string categories_ids = 3;
 }
 
 message GetMyOrdersResponse {
@@ -52,6 +53,9 @@ message CreateOrderResponse {
 
 message GetOrdersRequest {
   repeated string categories_ids = 1;
+  string status = 2;
+  string client_id = 3;
+  string master_id = 4;
 }
 
 message GetOrdersResponse {
