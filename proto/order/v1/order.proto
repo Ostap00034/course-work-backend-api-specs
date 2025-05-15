@@ -42,7 +42,7 @@ message CreateOrderRequest {
   string longitude = 5;
   string latitude = 6;
   string status = 7;
-  repeated string categories_ids = 8;
+  string category_id = 8;
   string client_id = 9;
   string master_id = 10;
 }

@@ -223,7 +223,7 @@ type CreateOrderRequest struct {
 	Longitude     string                 `protobuf:"bytes,5,opt,name=longitude,proto3" json:"longitude,omitempty"`
 	Latitude      string                 `protobuf:"bytes,6,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	Status        string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
-	CategoriesIds []string               `protobuf:"bytes,8,rep,name=categories_ids,json=categoriesIds,proto3" json:"categories_ids,omitempty"`
+	CategoryId    string                 `protobuf:"bytes,8,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
 	ClientId      string                 `protobuf:"bytes,9,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	MasterId      string                 `protobuf:"bytes,10,opt,name=master_id,json=masterId,proto3" json:"master_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -309,11 +309,11 @@ func (x *CreateOrderRequest) GetStatus() string {
 	return ""
 }
 
-func (x *CreateOrderRequest) GetCategoriesIds() []string {
+func (x *CreateOrderRequest) GetCategoryId() string {
 	if x != nil {
-		return x.CategoriesIds
+		return x.CategoryId
 	}
-	return nil
+	return ""
 }
 
 func (x *CreateOrderRequest) GetClientId() string {
@@ -792,7 +792,7 @@ const file_order_v1_order_proto_rawDesc = "" +
 	"\x1aGetMyFinishedOrdersRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"K\n" +
 	"\x1bGetMyFinishedOrdersResponse\x12,\n" +
-	"\x06Orders\x18\x01 \x03(\v2\x14.common.v1.OrderDataR\x06Orders\"\xaf\x02\n" +
+	"\x06Orders\x18\x01 \x03(\v2\x14.common.v1.OrderDataR\x06Orders\"\xa9\x02\n" +
 	"\x12CreateOrderRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x14\n" +
@@ -800,8 +800,9 @@ const file_order_v1_order_proto_rawDesc = "" +
 	"\aaddress\x18\x04 \x01(\tR\aaddress\x12\x1c\n" +
 	"\tlongitude\x18\x05 \x01(\tR\tlongitude\x12\x1a\n" +
 	"\blatitude\x18\x06 \x01(\tR\blatitude\x12\x16\n" +
-	"\x06status\x18\a \x01(\tR\x06status\x12%\n" +
-	"\x0ecategories_ids\x18\b \x03(\tR\rcategoriesIds\x12\x1b\n" +
+	"\x06status\x18\a \x01(\tR\x06status\x12\x1f\n" +
+	"\vcategory_id\x18\b \x01(\tR\n" +
+	"categoryId\x12\x1b\n" +
 	"\tclient_id\x18\t \x01(\tR\bclientId\x12\x1b\n" +
 	"\tmaster_id\x18\n" +
 	" \x01(\tR\bmasterId\"A\n" +
