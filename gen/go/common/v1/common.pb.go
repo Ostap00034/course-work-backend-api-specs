@@ -324,6 +324,91 @@ func (x *OrderData) GetUpdatedAt() string {
 	return ""
 }
 
+// Общая модель предложения
+type OfferData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Master        *UserData              `protobuf:"bytes,2,opt,name=master,proto3" json:"master,omitempty"`
+	Order         *OrderData             `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
+	Price         float32                `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OfferData) Reset() {
+	*x = OfferData{}
+	mi := &file_common_v1_common_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OfferData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OfferData) ProtoMessage() {}
+
+func (x *OfferData) ProtoReflect() protoreflect.Message {
+	mi := &file_common_v1_common_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OfferData.ProtoReflect.Descriptor instead.
+func (*OfferData) Descriptor() ([]byte, []int) {
+	return file_common_v1_common_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *OfferData) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *OfferData) GetMaster() *UserData {
+	if x != nil {
+		return x.Master
+	}
+	return nil
+}
+
+func (x *OfferData) GetOrder() *OrderData {
+	if x != nil {
+		return x.Order
+	}
+	return nil
+}
+
+func (x *OfferData) GetPrice() float32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *OfferData) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *OfferData) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
 var File_common_v1_common_proto protoreflect.FileDescriptor
 
 const file_common_v1_common_proto_rawDesc = "" +
@@ -357,7 +442,14 @@ const file_common_v1_common_proto_rawDesc = "" +
 	" \x01(\v2\x13.common.v1.UserDataR\x06client\x12+\n" +
 	"\x06master\x18\v \x01(\v2\x13.common.v1.UserDataR\x06master\x12\x1c\n" +
 	"\tcreatedAt\x18\f \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\r \x01(\tR\tupdatedAtBOZMgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1;commonv1b\x06proto3"
+	"\tupdatedAt\x18\r \x01(\tR\tupdatedAt\"\xc6\x01\n" +
+	"\tOfferData\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12+\n" +
+	"\x06master\x18\x02 \x01(\v2\x13.common.v1.UserDataR\x06master\x12*\n" +
+	"\x05order\x18\x03 \x01(\v2\x14.common.v1.OrderDataR\x05order\x12\x14\n" +
+	"\x05price\x18\x04 \x01(\x02R\x05price\x12\x1c\n" +
+	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\x06 \x01(\tR\tupdatedAtBOZMgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1;commonv1b\x06proto3"
 
 var (
 	file_common_v1_common_proto_rawDescOnce sync.Once
@@ -371,20 +463,23 @@ func file_common_v1_common_proto_rawDescGZIP() []byte {
 	return file_common_v1_common_proto_rawDescData
 }
 
-var file_common_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_common_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_common_v1_common_proto_goTypes = []any{
 	(*UserData)(nil),     // 0: common.v1.UserData
 	(*CategoryData)(nil), // 1: common.v1.CategoryData
 	(*OrderData)(nil),    // 2: common.v1.OrderData
+	(*OfferData)(nil),    // 3: common.v1.OfferData
 }
 var file_common_v1_common_proto_depIdxs = []int32{
 	0, // 0: common.v1.OrderData.client:type_name -> common.v1.UserData
 	0, // 1: common.v1.OrderData.master:type_name -> common.v1.UserData
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 2: common.v1.OfferData.master:type_name -> common.v1.UserData
+	2, // 3: common.v1.OfferData.order:type_name -> common.v1.OrderData
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_common_v1_common_proto_init() }
@@ -398,7 +493,7 @@ func file_common_v1_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_v1_common_proto_rawDesc), len(file_common_v1_common_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

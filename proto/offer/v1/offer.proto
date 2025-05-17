@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package offer.v1;
+
+option go_package = "github.com/Ostap00034/course-work-backend-api-specs/gen/go/offer/v1;offerv1";
+
+import "common/v1/common.proto";
+
+service OfferService {
+  rpc GetMyOrderOffers (GetMyOrderOffersRequest) returns (GetMyOrderOffersResponse);
+  rpc CreateOffer(CreateOfferRequest) returns (CreateOfferResponse);
+}
+
+message GetMyOrderOffersRequest {
+  string order_id = 1;
+}
+
+message GetMyOrderOffersResponse {
+  repeated common.v1.OfferData offers = 1;
+}
+
+message CreateOfferRequest {
+  string order_id = 1;
+  string master_id =2;
+  float price = 3;
+}
+
+message CreateOfferResponse {
+  common.v1.OfferData offer = 1;
+}
