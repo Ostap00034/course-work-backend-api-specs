@@ -22,7 +22,8 @@ service UserService {
 message CreateUserRequest {
   string email    = 1;
   string fio = 2;
-  string password = 3;
+  string role = 3;
+  string password = 4;
 }
 
 message ChangeUserRequest {
