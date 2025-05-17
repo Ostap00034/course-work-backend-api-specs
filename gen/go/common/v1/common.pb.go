@@ -331,8 +331,9 @@ type OfferData struct {
 	Master        *UserData              `protobuf:"bytes,2,opt,name=master,proto3" json:"master,omitempty"`
 	Order         *OrderData             `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
 	Price         float32                `protobuf:"fixed32,4,opt,name=price,proto3" json:"price,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -395,6 +396,13 @@ func (x *OfferData) GetPrice() float32 {
 	return 0
 }
 
+func (x *OfferData) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
 func (x *OfferData) GetCreatedAt() string {
 	if x != nil {
 		return x.CreatedAt
@@ -442,14 +450,15 @@ const file_common_v1_common_proto_rawDesc = "" +
 	" \x01(\v2\x13.common.v1.UserDataR\x06client\x12+\n" +
 	"\x06master\x18\v \x01(\v2\x13.common.v1.UserDataR\x06master\x12\x1c\n" +
 	"\tcreatedAt\x18\f \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\r \x01(\tR\tupdatedAt\"\xc6\x01\n" +
+	"\tupdatedAt\x18\r \x01(\tR\tupdatedAt\"\xde\x01\n" +
 	"\tOfferData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12+\n" +
 	"\x06master\x18\x02 \x01(\v2\x13.common.v1.UserDataR\x06master\x12*\n" +
 	"\x05order\x18\x03 \x01(\v2\x14.common.v1.OrderDataR\x05order\x12\x14\n" +
-	"\x05price\x18\x04 \x01(\x02R\x05price\x12\x1c\n" +
-	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\x06 \x01(\tR\tupdatedAtBOZMgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1;commonv1b\x06proto3"
+	"\x05price\x18\x04 \x01(\x02R\x05price\x12\x16\n" +
+	"\x06status\x18\x05 \x01(\tR\x06status\x12\x1c\n" +
+	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\a \x01(\tR\tupdatedAtBOZMgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/common/v1;commonv1b\x06proto3"
 
 var (
 	file_common_v1_common_proto_rawDescOnce sync.Once

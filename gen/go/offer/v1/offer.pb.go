@@ -214,6 +214,102 @@ func (x *CreateOfferResponse) GetOffer() *v1.OfferData {
 	return nil
 }
 
+type UpdateOfferRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateOfferRequest) Reset() {
+	*x = UpdateOfferRequest{}
+	mi := &file_offer_v1_offer_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateOfferRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateOfferRequest) ProtoMessage() {}
+
+func (x *UpdateOfferRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_offer_v1_offer_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateOfferRequest.ProtoReflect.Descriptor instead.
+func (*UpdateOfferRequest) Descriptor() ([]byte, []int) {
+	return file_offer_v1_offer_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateOfferRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateOfferRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type UpdateOfferResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Offer         *v1.OfferData          `protobuf:"bytes,1,opt,name=offer,proto3" json:"offer,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateOfferResponse) Reset() {
+	*x = UpdateOfferResponse{}
+	mi := &file_offer_v1_offer_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateOfferResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateOfferResponse) ProtoMessage() {}
+
+func (x *UpdateOfferResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_offer_v1_offer_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateOfferResponse.ProtoReflect.Descriptor instead.
+func (*UpdateOfferResponse) Descriptor() ([]byte, []int) {
+	return file_offer_v1_offer_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateOfferResponse) GetOffer() *v1.OfferData {
+	if x != nil {
+		return x.Offer
+	}
+	return nil
+}
+
 var File_offer_v1_offer_proto protoreflect.FileDescriptor
 
 const file_offer_v1_offer_proto_rawDesc = "" +
@@ -228,10 +324,16 @@ const file_offer_v1_offer_proto_rawDesc = "" +
 	"\tmaster_id\x18\x02 \x01(\tR\bmasterId\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x02R\x05price\"A\n" +
 	"\x13CreateOfferResponse\x12*\n" +
-	"\x05offer\x18\x01 \x01(\v2\x14.common.v1.OfferDataR\x05offer2\xb5\x01\n" +
+	"\x05offer\x18\x01 \x01(\v2\x14.common.v1.OfferDataR\x05offer\"<\n" +
+	"\x12UpdateOfferRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\"A\n" +
+	"\x13UpdateOfferResponse\x12*\n" +
+	"\x05offer\x18\x01 \x01(\v2\x14.common.v1.OfferDataR\x05offer2\x81\x02\n" +
 	"\fOfferService\x12Y\n" +
 	"\x10GetMyOrderOffers\x12!.offer.v1.GetMyOrderOffersRequest\x1a\".offer.v1.GetMyOrderOffersResponse\x12J\n" +
-	"\vCreateOffer\x12\x1c.offer.v1.CreateOfferRequest\x1a\x1d.offer.v1.CreateOfferResponseBMZKgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/offer/v1;offerv1b\x06proto3"
+	"\vCreateOffer\x12\x1c.offer.v1.CreateOfferRequest\x1a\x1d.offer.v1.CreateOfferResponse\x12J\n" +
+	"\vUpdateOffer\x12\x1c.offer.v1.UpdateOfferRequest\x1a\x1d.offer.v1.UpdateOfferResponseBMZKgithub.com/Ostap00034/course-work-backend-api-specs/gen/go/offer/v1;offerv1b\x06proto3"
 
 var (
 	file_offer_v1_offer_proto_rawDescOnce sync.Once
@@ -245,26 +347,31 @@ func file_offer_v1_offer_proto_rawDescGZIP() []byte {
 	return file_offer_v1_offer_proto_rawDescData
 }
 
-var file_offer_v1_offer_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_offer_v1_offer_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_offer_v1_offer_proto_goTypes = []any{
 	(*GetMyOrderOffersRequest)(nil),  // 0: offer.v1.GetMyOrderOffersRequest
 	(*GetMyOrderOffersResponse)(nil), // 1: offer.v1.GetMyOrderOffersResponse
 	(*CreateOfferRequest)(nil),       // 2: offer.v1.CreateOfferRequest
 	(*CreateOfferResponse)(nil),      // 3: offer.v1.CreateOfferResponse
-	(*v1.OfferData)(nil),             // 4: common.v1.OfferData
+	(*UpdateOfferRequest)(nil),       // 4: offer.v1.UpdateOfferRequest
+	(*UpdateOfferResponse)(nil),      // 5: offer.v1.UpdateOfferResponse
+	(*v1.OfferData)(nil),             // 6: common.v1.OfferData
 }
 var file_offer_v1_offer_proto_depIdxs = []int32{
-	4, // 0: offer.v1.GetMyOrderOffersResponse.offers:type_name -> common.v1.OfferData
-	4, // 1: offer.v1.CreateOfferResponse.offer:type_name -> common.v1.OfferData
-	0, // 2: offer.v1.OfferService.GetMyOrderOffers:input_type -> offer.v1.GetMyOrderOffersRequest
-	2, // 3: offer.v1.OfferService.CreateOffer:input_type -> offer.v1.CreateOfferRequest
-	1, // 4: offer.v1.OfferService.GetMyOrderOffers:output_type -> offer.v1.GetMyOrderOffersResponse
-	3, // 5: offer.v1.OfferService.CreateOffer:output_type -> offer.v1.CreateOfferResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	6, // 0: offer.v1.GetMyOrderOffersResponse.offers:type_name -> common.v1.OfferData
+	6, // 1: offer.v1.CreateOfferResponse.offer:type_name -> common.v1.OfferData
+	6, // 2: offer.v1.UpdateOfferResponse.offer:type_name -> common.v1.OfferData
+	0, // 3: offer.v1.OfferService.GetMyOrderOffers:input_type -> offer.v1.GetMyOrderOffersRequest
+	2, // 4: offer.v1.OfferService.CreateOffer:input_type -> offer.v1.CreateOfferRequest
+	4, // 5: offer.v1.OfferService.UpdateOffer:input_type -> offer.v1.UpdateOfferRequest
+	1, // 6: offer.v1.OfferService.GetMyOrderOffers:output_type -> offer.v1.GetMyOrderOffersResponse
+	3, // 7: offer.v1.OfferService.CreateOffer:output_type -> offer.v1.CreateOfferResponse
+	5, // 8: offer.v1.OfferService.UpdateOffer:output_type -> offer.v1.UpdateOfferResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_offer_v1_offer_proto_init() }
@@ -278,7 +385,7 @@ func file_offer_v1_offer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_offer_v1_offer_proto_rawDesc), len(file_offer_v1_offer_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

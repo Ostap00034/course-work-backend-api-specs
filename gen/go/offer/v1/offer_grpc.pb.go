@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	OfferService_GetMyOrderOffers_FullMethodName = "/offer.v1.OfferService/GetMyOrderOffers"
 	OfferService_CreateOffer_FullMethodName      = "/offer.v1.OfferService/CreateOffer"
+	OfferService_UpdateOffer_FullMethodName      = "/offer.v1.OfferService/UpdateOffer"
 )
 
 // OfferServiceClient is the client API for OfferService service.
@@ -29,6 +30,7 @@ const (
 type OfferServiceClient interface {
 	GetMyOrderOffers(ctx context.Context, in *GetMyOrderOffersRequest, opts ...grpc.CallOption) (*GetMyOrderOffersResponse, error)
 	CreateOffer(ctx context.Context, in *CreateOfferRequest, opts ...grpc.CallOption) (*CreateOfferResponse, error)
+	UpdateOffer(ctx context.Context, in *UpdateOfferRequest, opts ...grpc.CallOption) (*UpdateOfferResponse, error)
 }
 
 type offerServiceClient struct {
@@ -59,12 +61,23 @@ func (c *offerServiceClient) CreateOffer(ctx context.Context, in *CreateOfferReq
 	return out, nil
 }
 
+func (c *offerServiceClient) UpdateOffer(ctx context.Context, in *UpdateOfferRequest, opts ...grpc.CallOption) (*UpdateOfferResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateOfferResponse)
+	err := c.cc.Invoke(ctx, OfferService_UpdateOffer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OfferServiceServer is the server API for OfferService service.
 // All implementations must embed UnimplementedOfferServiceServer
 // for forward compatibility.
 type OfferServiceServer interface {
 	GetMyOrderOffers(context.Context, *GetMyOrderOffersRequest) (*GetMyOrderOffersResponse, error)
 	CreateOffer(context.Context, *CreateOfferRequest) (*CreateOfferResponse, error)
+	UpdateOffer(context.Context, *UpdateOfferRequest) (*UpdateOfferResponse, error)
 	mustEmbedUnimplementedOfferServiceServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedOfferServiceServer) GetMyOrderOffers(context.Context, *GetMyO
 }
 func (UnimplementedOfferServiceServer) CreateOffer(context.Context, *CreateOfferRequest) (*CreateOfferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOffer not implemented")
+}
+func (UnimplementedOfferServiceServer) UpdateOffer(context.Context, *UpdateOfferRequest) (*UpdateOfferResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOffer not implemented")
 }
 func (UnimplementedOfferServiceServer) mustEmbedUnimplementedOfferServiceServer() {}
 func (UnimplementedOfferServiceServer) testEmbeddedByValue()                      {}
@@ -138,6 +154,24 @@ func _OfferService_CreateOffer_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OfferService_UpdateOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateOfferRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OfferServiceServer).UpdateOffer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OfferService_UpdateOffer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OfferServiceServer).UpdateOffer(ctx, req.(*UpdateOfferRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OfferService_ServiceDesc is the grpc.ServiceDesc for OfferService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var OfferService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateOffer",
 			Handler:    _OfferService_CreateOffer_Handler,
+		},
+		{
+			MethodName: "UpdateOffer",
+			Handler:    _OfferService_UpdateOffer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

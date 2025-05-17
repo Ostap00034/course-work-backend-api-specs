@@ -9,6 +9,7 @@ import "common/v1/common.proto";
 service OfferService {
   rpc GetMyOrderOffers (GetMyOrderOffersRequest) returns (GetMyOrderOffersResponse);
   rpc CreateOffer(CreateOfferRequest) returns (CreateOfferResponse);
+  rpc UpdateOffer(UpdateOfferRequest) returns (UpdateOfferResponse);
 }
 
 message GetMyOrderOffersRequest {
@@ -26,5 +27,14 @@ message CreateOfferRequest {
 }
 
 message CreateOfferResponse {
+  common.v1.OfferData offer = 1;
+}
+
+message UpdateOfferRequest {
+  string id = 1;
+  string status = 2;
+}
+
+message UpdateOfferResponse {
   common.v1.OfferData offer = 1;
 }
